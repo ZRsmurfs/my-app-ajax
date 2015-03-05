@@ -1,6 +1,12 @@
 <html>
 <head>
 <script type="text/javascript">
+document.addEventListener('deviceready', onDeviceReady, false);
+function onDeviceReady() {
+loadXMLDoc();
+
+}
+
 function loadXMLDoc()
 {
 var xmlhttp;
