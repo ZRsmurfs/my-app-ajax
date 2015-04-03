@@ -1,17 +1,107 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>phone_index.html</title>
-	
-    <meta name="keywords" content="keyword1,keyword2,keyword3">
-    <meta name="description" content="this is my page">
-    <meta name="content-type" content="text/html; charset=UTF-8">
-    
-    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>移动门户</title>
 
-  </head>
-  
-  <body>
-    <a href="phone_ajax.html">跳</a>
-  </body>
+<script type="text/javascript">
+function loadXMLDoc()
+{
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	  {// code for IE7+, Firefox, Chrome, Opera, Safari
+	  	xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {// code for IE6, IE5
+	  	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	xmlhttp.onreadystatechange=function()
+	  {
+	  if (xmlhttp.readyState==4)
+		{
+			document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+		}
+	  }
+	xmlhttp.open("GET","http://localhost:8080/mobile_portal_server/Login.jsp",true);
+	xmlhttp.send();
+}
+
+function login()
+{
+	var username = document.getElementById("username").value;
+	var password = document.getElementById("password").value;
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	  {
+		xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	xmlhttp.onreadystatechange=function()
+	  {
+	  if (xmlhttp.readyState==4)
+		{
+			document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+		}
+	  };
+	xmlhttp.open("POST","http://localhost:8080/mobile_portal_server/servlet/login_servlet",true);
+	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	xmlhttp.send("username="+username+"&password="+password);
+}
+
+function getAppInfo(appid)
+{
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	  {
+		xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	xmlhttp.onreadystatechange=function()
+	  {
+	  if (xmlhttp.readyState==4)
+		{
+			document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+		}
+	  };
+	xmlhttp.open("GET","http://localhost:8080/mobile_portal_server/servlet/app_servlet?app="+appid,true);
+	xmlhttp.send();
+}
+
+function backMainPage()
+{
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	  {
+		xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	xmlhttp.onreadystatechange=function()
+	  {
+	  if (xmlhttp.readyState==4)
+		{
+			document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+		}
+	  };
+	xmlhttp.open("GET","http://localhost:8080/mobile_portal_server/servlet/framework_servlet",true);
+	xmlhttp.send();
+}
+</script>
+
+</head>
+
+<body>
+<div id="myDiv">
+<button type="button" onclick="loadXMLDoc()">通过 AJAX 改变内容</button></div>
+</div>
+</body>
 </html>
