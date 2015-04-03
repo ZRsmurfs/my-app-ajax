@@ -10,6 +10,7 @@ var ip="192.168.191.1";
 function loadXMLDoc()
 {
 	var xmlhttp;
+	alert("in");
 	if (window.XMLHttpRequest)
 	  {// code for IE7+, Firefox, Chrome, Opera, Safari
 	  	xmlhttp=new XMLHttpRequest();
@@ -20,11 +21,14 @@ function loadXMLDoc()
 	  }
 	xmlhttp.onreadystatechange=function()
 	  {
-	  if (xmlhttp.readyState==4)
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		{
+			alert("in2");
+			alert(xmlhttp.status);
 			document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
 		}
 	  }
+	  alert("in3");
 	xmlhttp.open("GET","http://"+ip+":8080/mobile_portal_server/Login.jsp",true);
 	xmlhttp.send();
 }
@@ -44,7 +48,7 @@ function login()
 	  }
 	xmlhttp.onreadystatechange=function()
 	  {
-	  if (xmlhttp.readyState==4)
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		{
 			document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
 		}
@@ -67,7 +71,7 @@ function getAppInfo(appid)
 	  }
 	xmlhttp.onreadystatechange=function()
 	  {
-	  if (xmlhttp.readyState==4)
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		{
 			document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
 		}
@@ -89,7 +93,7 @@ function backMainPage()
 	  }
 	xmlhttp.onreadystatechange=function()
 	  {
-	  if (xmlhttp.readyState==4)
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		{
 			document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
 		}
