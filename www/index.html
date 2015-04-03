@@ -1,8 +1,7 @@
-
 <html>
 <head>
-<title>移动门户</title>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
 
 </head>
 
@@ -10,9 +9,18 @@
 <div id="myDiv">
 <button type="button" onclick="loadXMLDoc()">通过 AJAX 改变内容</button></div>
 </div>
+</body>
 <script type="text/javascript">
+
 var ip="192.168.191.1";
 //var ip="127.0.0.1";
+
+document.addEventListener('deviceready', onDeviceReady, false);
+function onDeviceReady() {
+loadXMLDoc();
+
+}
+
 function loadXMLDoc()
 {
 	var xmlhttp;
@@ -108,5 +116,5 @@ function backMainPage()
 	xmlhttp.send();
 }
 </script>
-</body>
+
 </html>
