@@ -13,7 +13,7 @@
 <script type="text/javascript">
 
 var ip="192.168.191.1";
-var project="test_web";
+var project="mobile_portal_server";
 //var ip="127.0.0.1";
 
 //document.addEventListener('deviceready', onDeviceReady, false);
@@ -25,7 +25,7 @@ var project="test_web";
 function loadXMLDoc()
 {
 	var xmlhttp;
-	alert("in");
+	//alert("in");
 	if (window.XMLHttpRequest)
 	  {// code for IE7+, Firefox, Chrome, Opera, Safari
 	  	xmlhttp=new XMLHttpRequest();
@@ -40,12 +40,12 @@ function loadXMLDoc()
 	  alert("xmlhttp.status="+xmlhttp.status);
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		{
-			alert("in2");
+			//alert("in2");
 			alert(xmlhttp.status);
 			document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
 		}
 	  }
-	  alert("in3");
+	  //alert("in3");
 	xmlhttp.open("GET","http://"+ip+":8080/"+project+"/Login.jsp",true);
 	xmlhttp.send();
 }
