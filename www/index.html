@@ -13,13 +13,14 @@
 <script type="text/javascript">
 
 var ip="192.168.191.1";
+var project="test_web";
 //var ip="127.0.0.1";
 
-document.addEventListener('deviceready', onDeviceReady, false);
-function onDeviceReady() {
-loadXMLDoc();
+//document.addEventListener('deviceready', onDeviceReady, false);
+//function onDeviceReady() {
+//loadXMLDoc();
 
-}
+//}
 
 function loadXMLDoc()
 {
@@ -35,6 +36,8 @@ function loadXMLDoc()
 	  }
 	xmlhttp.onreadystatechange=function()
 	  {
+	  alert("xmlhttp.readyState="+xmlhttp.readyState);
+	  alert("xmlhttp.status="+xmlhttp.status);
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		{
 			alert("in2");
@@ -43,7 +46,7 @@ function loadXMLDoc()
 		}
 	  }
 	  alert("in3");
-	xmlhttp.open("GET","http://"+ip+":8080/mobile_portal_server/Login.jsp",true);
+	xmlhttp.open("GET","http://"+ip+":8080/"+project+"/Login.jsp",true);
 	xmlhttp.send();
 }
 
@@ -67,7 +70,7 @@ function login()
 			document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
 		}
 	  };
-	xmlhttp.open("POST","http://"+ip+":8080/mobile_portal_server/servlet/login_servlet",true);
+	xmlhttp.open("POST","http://"+ip+":8080/"+project+"/servlet/login_servlet",true);
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xmlhttp.send("username="+username+"&password="+password);
 }
@@ -90,7 +93,7 @@ function getAppInfo(appid)
 			document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
 		}
 	  };
-	xmlhttp.open("GET","http://"+ip+":8080/mobile_portal_server/servlet/app_servlet?app="+appid,true);
+	xmlhttp.open("GET","http://"+ip+":8080/"+project+"/servlet/app_servlet?app="+appid,true);
 	xmlhttp.send();
 }
 
@@ -112,7 +115,7 @@ function backMainPage()
 			document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
 		}
 	  };
-	xmlhttp.open("GET","http://"+ip+":8080/mobile_portal_server/servlet/framework_servlet",true);
+	xmlhttp.open("GET","http://"+ip+":8080/"+project+"/servlet/framework_servlet",true);
 	xmlhttp.send();
 }
 </script>
